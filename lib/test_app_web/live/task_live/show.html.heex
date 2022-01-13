@@ -1,0 +1,31 @@
+<h1>Show Task</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.task_show_path(@socket, :show, @task)}>
+    <.live_component
+      module={TestAppWeb.TaskLive.FormComponent}
+      id={@task.id}
+      title={@page_title}
+      action={@live_action}
+      task={@task}
+      return_to={Routes.task_show_path(@socket, :show, @task)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @task.name %>
+  </li>
+
+  <li>
+    <strong>Completed:</strong>
+    <%= @task.completed %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.task_show_path(@socket, :edit, @task), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.task_index_path(@socket, :index) %></span>
