@@ -24,6 +24,7 @@ defmodule TestAppWeb.TaskLive.FormComponent do
   end
 
   def handle_event("save", %{"task" => task_params}, socket) do
+    IO.inspect(socket)
     save_task(socket, socket.assigns.action, task_params)
   end
 

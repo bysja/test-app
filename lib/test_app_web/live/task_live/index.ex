@@ -4,15 +4,11 @@ defmodule TestAppWeb.TaskLive.Index do
   alias TestApp.Tasks
   alias TestApp.Tasks.Task
 
-  alias TestApp.Accounts
-
   @impl true
   def mount(_params, session, socket) do
-    socket =
-      assign_current_user(socket, session)
-      |> assign(:tasks, list_tasks())
+    socket = assign_current_user(socket, session)
 
-    {:ok, socket}
+    {:ok, assign(socket, :tasks, list_tasks(socket.assigns.current_user.id))}
   end
 
   @impl true
@@ -43,10 +39,10 @@ defmodule TestAppWeb.TaskLive.Index do
     task = Tasks.get_task!(id)
     {:ok, _} = Tasks.delete_task(task)
 
-    {:noreply, assign(socket, :tasks, list_tasks())}
+    {:noreply, assign(socket, :tasks, list_tasks(socket.assigns.current_user.id))}
   end
 
-  defp list_tasks do
-    Tasks.list_tasks()
+  defp list_tasks(user_id) do
+    Tasks.list_tasks(user_id)
   end
 end

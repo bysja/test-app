@@ -17,8 +17,14 @@ defmodule TestApp.Tasks do
       [%Task{}, ...]
 
   """
-  def list_tasks do
-    Repo.all(Task)
+
+  # def list_tasks do
+  #   Repo.all(Task)
+  # end
+
+  def list_tasks(user_id) do
+    query = from(t in Task, where: t.user_id == ^user_id)
+    Repo.all(query)
   end
 
   @doc """
