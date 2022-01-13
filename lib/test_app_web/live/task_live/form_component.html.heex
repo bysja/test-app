@@ -17,6 +17,9 @@
     <%= checkbox f, :completed %>
     <%= error_tag f, :completed %>
 
+    <%= hidden_input f, :user_id, value: 2 %>
+
+
     <div>
       <%= submit "Save", phx_disable_with: "Saving..." %>
     </div>

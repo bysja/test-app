@@ -13,7 +13,7 @@ defmodule TestApp.Tasks.Task do
   @doc false
   def changeset(task, attrs) do
     task
-    |> cast(attrs, [:name, :completed])
-    |> validate_required([:name, :completed])
+    |> cast(attrs, [:name, :completed, :user_id])
+    |> validate_required([:name, :completed, :user_id])
   end
 end
