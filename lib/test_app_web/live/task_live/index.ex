@@ -4,9 +4,15 @@ defmodule TestAppWeb.TaskLive.Index do
   alias TestApp.Tasks
   alias TestApp.Tasks.Task
 
+  alias TestApp.Accounts
+
   @impl true
-  def mount(_params, _session, socket) do
-    {:ok, assign(socket, :tasks, list_tasks())}
+  def mount(_params, session, socket) do
+    socket =
+      assign_current_user(socket, session)
+      |> assign(:tasks, list_tasks())
+
+    {:ok, socket}
   end
 
   @impl true

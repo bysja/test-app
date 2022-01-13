@@ -47,6 +47,8 @@ defmodule TestAppWeb do
       use Phoenix.LiveView,
         layout: {TestAppWeb.LayoutView, "live.html"}
 
+      import TestAppWeb.LiveHelpers
+
       unquote(view_helpers())
     end
   end
