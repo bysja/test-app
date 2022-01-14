@@ -9,6 +9,7 @@
       action={@live_action}
       task={@task}
       return_to={Routes.task_show_path(@socket, :show, @task)}
+      current_user={@current_user}
     />
   </.modal>
 <% end %>
@@ -23,6 +24,11 @@
   <li>
     <strong>Completed:</strong>
     <%= @task.completed %>
+  </li>
+
+  <li>
+    <strong>User ID:</strong>
+    <%= @task.user_id %>
   </li>
 
 </ul>

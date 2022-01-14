@@ -9,6 +9,7 @@
       action={@live_action}
       task={@task}
       return_to={Routes.task_index_path(@socket, :index)}
+      current_user={@current_user}
     />
   </.modal>
 <% end %>
@@ -18,7 +19,7 @@
     <tr>
       <th>Name</th>
       <th>Completed</th>
-
+      <th>User ID</th>
       <th></th>
     </tr>
   </thead>
@@ -27,6 +28,7 @@
       <tr id={"task-#{task.id}"}>
         <td><%= task.name %></td>
         <td><%= task.completed %></td>
+        <td><%= task.user_id %></td>
 
         <td>
           <span><%= live_redirect "Show", to: Routes.task_show_path(@socket, :show, task) %></span>

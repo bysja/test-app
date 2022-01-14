@@ -24,6 +24,7 @@ defmodule TestAppWeb.TaskLive.FormComponent do
   end
 
   def handle_event("save", %{"task" => task_params}, socket) do
+    task_params = Map.put(task_params, "user_id", socket.assigns.current_user.id)
     save_task(socket, socket.assigns.action, task_params)
   end
 
