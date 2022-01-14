@@ -1,19 +1,13 @@
 # TestApp
 
-To start your Phoenix server:
+## Code to create initial commit
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
-
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+```
+mix phx.new test_app
+cd test_app
+mix ecto.create
+mix phx.gen.auth Accounts User users
+mix deps.get
+mix phx.gen.live Tasks Task tasks name completed:boolean user_id:references:users
+mix ecto.migrate
+```
